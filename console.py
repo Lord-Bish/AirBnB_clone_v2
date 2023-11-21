@@ -141,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
                         try:
                             arg[1] = eval(arg[1])
                         except:
-                            arg[1] = arg[1].replace('_', ' ')
+                            arg[1] = arg[1].replace('_',' ')
                         setattr(obj, arg[0], arg[1])
                 obj.save()
             except:
