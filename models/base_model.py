@@ -53,7 +53,7 @@ class BaseModel:
     def to_dict(self):
         """Convert instance into dict format"""
         dictionary = dict(self.__dict__)
-        dictionary['__class__'] = self.__class.__name__
+        dictionary['__class__'] = self.__class__.__name__
         if 'created_at' in dictionary:
             dictionary['created_at'] = self.created_at.strftime(
                     "%Y-%m-%dT%H:%M:%S.%f")
