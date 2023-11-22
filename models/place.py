@@ -34,3 +34,5 @@ class Place(BaseModel, Base):
         amenities = relationship("Amenity", secondary=place_amenity,
                                  viewonly=False,
                                  back_populates="place_amenities")
+
+    if os.getenv("HBNB_TYPE_STORAGE") == "fs":
