@@ -36,3 +36,29 @@ class Place(BaseModel, Base):
                                  back_populates="place_amenities")
 
     if os.getenv("HBNB_TYPE_STORAGE") == "fs":
+        @property
+        def reviews(self):
+            """returns the list of Review instances"""
+            stor = models.storage.all()
+            L = []
+            result = []
+            for key in stor:
+                review = key.replace('.', ' ')
+                review = shlex.split(review)
+                if (review[0] == 'Review'):
+                    L.append(stor[key])
+            for val in L:
+                if (val.place_id == self.id):
+                    result.append(val)
+            return (result)
+
+        @property
+        def amenities(self):
+            """returns the list of Amenity instances"""
+            return self.amenity_ids
+
+        @amenities.setter
+        def amenities(self, obj=None):
+            """handles append method for adding an Amenity.id"""
+            if type(obj) is Amenity and obj.id not in self.amenity_ids:
+                self.amenity_ids.append(obj.id)
