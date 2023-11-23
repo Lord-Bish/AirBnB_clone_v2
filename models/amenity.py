@@ -7,7 +7,7 @@ import os
 from models.place import place_amenity
 
 
-class Amenity(BaseModel, base):
+class Amenity(BaseModel, Base):
     """Amenity class"""
     __tablename__ = "amenities"
     if os.getenv("HBNB_TYPE_STORAGE") == "db":
