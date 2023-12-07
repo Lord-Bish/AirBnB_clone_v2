@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Fabric script that generates a .tgz archive from web_static"""
 import os
-from fabric.api import local
+from fabric.api import *
 import tarfile
 from datetime import datetime
 
