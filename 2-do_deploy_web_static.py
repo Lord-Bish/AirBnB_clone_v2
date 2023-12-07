@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Fabric script that generates a .tgz archive from web_static"""
 import os
-from fabric.api import *
+from fabric.api import local, env, run, put
 import tarfile
 from datetime import datetime
 
@@ -24,6 +24,7 @@ def do_pack():
         return None
 
 def do_deploy(archive_path):
+    """distributes an archive to your web servers"""
     f = archive_path.split('/')[1]
     try:
         put(archive_path, '/tmp/{}'.format(f))
